@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}Update Availability - Meetup App{% endblock %} {% block content %}
+<div class="container">
+  <h2>Update General Availability</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">{{ form.monday.label_tag }} {{ form.monday }}</div>
+    <div class="form-group">{{ form.tuesday.label_tag }} {{ form.tuesday }}</div>
+    <div class="form-group">{{ form.wednesday.label_tag }} {{ form.wednesday }}</div>
+    <div class="form-group">{{ form.thursday.label_tag }} {{ form.thursday }}</div>
+    <div class="form-group">{{ form.friday.label_tag }} {{ form.friday }}</div>
+    <div class="form-group">{{ form.saturday.label_tag }} {{ form.saturday }}</div>
+    <div class="form-group">{{ form.sunday.label_tag }} {{ form.sunday }}</div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+{% endblock %}

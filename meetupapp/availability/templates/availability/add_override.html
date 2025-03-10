@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block title %}Add Availability Override - Meetup App{% endblock %} {% block content %}
+<div class="container">
+  <h2>Add Availability Override</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">{{ form.date.label_tag }} {{ form.date }}</div>
+    <div class="form-group form-check">{{ form.is_available }} {{ form.is_available.label_tag }}</div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+{% endblock %}
