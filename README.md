@@ -131,12 +131,16 @@ meetup-app/
 
 ### **Availability Management**
 
+(Coming Soon)
+
 ![Availability Management](screenshots/availability.png)
 
 ---
 
 ## **Future Enhancements**
 
+- Update availability so it isn't a free form text box
+- Update interests to be its own model instead of a CSV
 - Add **real-time notifications** for group updates.
 - Implement **email notifications** for group invitations and reminders.
 - Integrate with a **calendar API** (e.g., Google Calendar) to sync meeting times.
