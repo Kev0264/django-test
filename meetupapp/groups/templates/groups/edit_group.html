@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}Edit Group - Meetup App{% endblock %} {% block content %}
+<div class="container">
+  <h2>Edit Group</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">{{ form.name.label_tag }} {{ form.name }}</div>
+    <div class="form-group">{{ form.description.label_tag }} {{ form.description }}</div>
+    <div class="form-group">{{ form.meeting_time.label_tag }} {{ form.meeting_time }}</div>
+    <div class="form-group">
+      {{ form.interests.label_tag }} {{ form.interests }}
+      <small class="form-text text-muted">Enter comma-separated interests (e.g., board games, sports, reading).</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

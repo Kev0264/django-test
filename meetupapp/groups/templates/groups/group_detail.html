@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %}Group Detail - Meetup App{% endblock %} {% block content %}
+<div class="container">
+  <h2>{{ group.name }}</h2>
+  <p>{{ group.description }}</p>
+  <p>Meeting Time: {{ group.meeting_time }}</p>
+  <p>Interests: {{ group.interests }}</p>
+  <h3>Members</h3>
+  <ul>
+    {% for member in group.members.all %}
+    <li>{{ member.username }}</li>
+    {% endfor %}
+  </ul>
+  <h3>Events</h3>
+  <ul>
+    {% for event in group.events.all %}
+    <li>{{ event.name }} - {{ event.date }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'groups:edit_group' group.id %}" class="btn btn-primary">Edit Group</a>
+  <a href="{% url 'groups:delete_group' group.id %}" class="btn btn-danger">Delete Group</a>
+</div>
+{% endblock %}

@@ -12,7 +12,7 @@ def create_group(request):
             group.creator = request.user
             group.save()
             group.members.add(request.user)
-            return redirect('group_detail', group_id=group.id)
+            return redirect('groups:group_detail', group_id=group.id)
     else:
         form = GroupForm()
     return render(request, 'groups/create_group.html', {'form': form})
@@ -33,3 +33,32 @@ def search_groups(request):
 
         
     return render(request, 'groups/search_groups.html', {'groups': groups})
+
+@login_required
+def group_detail(request, group_id):
+    group = Group.objects.get(id=group_id)
+    return render(request, 'groups/group_detail.html', {'group': group})
+
+@login_required
+def edit_group(request, group_id):
+    group = Group.objects.get(id=group_id)
+    if request.method == 'POST':
+        form = GroupForm(request.POST, instance=group)
+        if form.is_valid():
+            form.save()
+            return redirect('groups:group_detail', group_id=group.id)
+    else:
+        form = GroupForm(instance=group)
+    return render(request, 'groups/edit_group.html', {'form': form, 'group': group})
+
+@login_required
+def delete_group(request, group_id):
+    group = Group.objects.get(id=group_id)
+    group.delete()
+    return redirect('core:home')
+
+@login_required
+def join_group(request, group_id):
+    group = Group.objects.get(id=group_id)
+    group.members.add(request.user)
+    return redirect('groups:group_detail', group_id=group_id)

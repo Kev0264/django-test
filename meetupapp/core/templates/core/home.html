@@ -14,6 +14,16 @@
       <a class="btn btn-success btn-lg" href="{% url 'users:register' %}" role="button">Register</a>
       {% endif %}
     </div>
+    <div class="mt-5">
+      <h2>Featured Groups</h2>
+      <div class="list-group">
+        {% for group in featured_groups %}
+        <a href="{% url 'groups:group_detail' group.id %}" class="list-group-item list-group-item-action">
+          {{ group.name }} - {{ group.description }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
